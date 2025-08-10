@@ -21,8 +21,11 @@ jobs:
         with:
           node-version: 18
 
+      - name: Setup pnpm
+        run: npm install -g pnpm
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build (Static Export)
         run: |
