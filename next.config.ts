@@ -16,8 +16,8 @@ const nextConfig = {
     ],
   },
 
-  assetPrefix: "",
-  basePath: "",
+  basePath: "/reidxtreme-4.0",
+  assetPrefix: "/reidxtreme-4.0/",
   output: "export",
 };
 
