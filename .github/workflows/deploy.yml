@@ -30,7 +30,7 @@ jobs:
       - name: Build (Static Export)
         run: |
           npm run build
-          echo uccieee.lk > out/CNAME
+          echo reidxtreme.ucscieee.lk > out/CNAME
           touch out/.nojekyll
 
       - name: Deploy to GitHub Pages
