@@ -19,6 +19,16 @@ const nextConfig = {
   assetPrefix: "",
   basePath: "",
   output: "export",
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: "/",
+        destination: "/register",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
