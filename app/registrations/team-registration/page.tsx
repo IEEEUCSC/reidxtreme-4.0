@@ -27,7 +27,8 @@ export default async function TeamRegistrationPage() {
         />
       </div>
 
-      <div className="bg-background fixed right-[18px] bottom-[18px] z-[100] flex h-9 w-64"></div>
+      <div className="bg-background fixed right-0 bottom-[18px] z-[100] hidden h-9 w-64 sm:flex"></div>
+      <div className="bg-background fixed right-0 bottom-0 z-[100] flex h-9 w-full sm:hidden"></div>
     </>
   );
 }
