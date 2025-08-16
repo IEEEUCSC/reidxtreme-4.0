@@ -3,6 +3,7 @@ import Image from "next/image";
 import BGImg from "@/public/img/cover.png";
 import BubbleUpButton from "@/components/ui/BubbleUpButton/BubbleUpButton";
 import { cn } from "@/lib/utils";
+import RevealAnimationContainer from "@/components/reveal-animation-container";
 
 // Card data structure
 const cardData = {
@@ -46,30 +47,49 @@ export default function Page() {
     <main className="relative grid min-h-screen grid-rows-[60vh_1fr] gap-y-4 p-4 lg:grid-cols-2 lg:grid-rows-1">
       <div className="relative flex flex-col items-center justify-center gap-y-4 lg:gap-y-8">
         <div className="mt-24 flex w-full flex-col items-center gap-y-4">
-          <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
-            Team Registration
-          </h3>
-          <Card
-            subheading={cardData.teamRegistration.subheading}
-            title={cardData.teamRegistration.title}
-            description={cardData.teamRegistration.description}
-            link={cardData.teamRegistration.link}
-            status={cardData.teamRegistration.status}
-          />
+          <RevealAnimationContainer className="mx-auto flex items-center justify-center">
+            <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
+              Team Registration
+            </h3>
+          </RevealAnimationContainer>
+          <RevealAnimationContainer
+            delay={0.3}
+            className="mx-auto flex items-center justify-center"
+          >
+            <Card
+              subheading={cardData.teamRegistration.subheading}
+              title={cardData.teamRegistration.title}
+              description={cardData.teamRegistration.description}
+              link={cardData.teamRegistration.link}
+              status={cardData.teamRegistration.status}
+            />
+          </RevealAnimationContainer>
         </div>
         <div className="mt-16 flex w-full flex-col items-center gap-y-8">
-          <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
-            Workshop Registration
-          </h3>
+          <RevealAnimationContainer
+            delay={0.4}
+            className="mx-auto flex items-center justify-center"
+          >
+            <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
+              Workshop Registration
+            </h3>
+          </RevealAnimationContainer>
+
           {cardData.workshops.map((workshop, index) => (
-            <Card
+            <RevealAnimationContainer
               key={index}
-              subheading={workshop.subheading}
-              title={workshop.title}
-              description={workshop.description}
-              link={workshop.link}
-              status={workshop.status}
-            />
+              delay={0.3 + (index + 1) * 0.1}
+              className="mx-auto flex items-center justify-center"
+            >
+              <Card
+                key={index}
+                subheading={workshop.subheading}
+                title={workshop.title}
+                description={workshop.description}
+                link={workshop.link}
+                status={workshop.status}
+              />
+            </RevealAnimationContainer>
           ))}
         </div>
       </div>
