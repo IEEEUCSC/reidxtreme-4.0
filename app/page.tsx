@@ -30,7 +30,7 @@ export default function Home() {
         {/* Coming Soon Message */}
         <div className="bg-card border-border mb-8 rounded-2xl border p-6 md:p-8">
           <h2 className="text-foreground mb-4 text-2xl font-semibold md:text-3xl">
-            We're Still Cooking!
+            We&apos;re Still Cooking!
           </h2>
           <p className="text-muted-foreground mb-6 text-base md:text-lg">
             Our official website is under construction, but the excitement is
