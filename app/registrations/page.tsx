@@ -9,7 +9,7 @@ export default function Page() {
     <main className="relative grid min-h-screen grid-rows-[60vh_1fr] gap-y-4 p-4 lg:grid-cols-2 lg:grid-rows-1">
       <div className="relative flex flex-col items-center justify-center gap-y-4 lg:gap-y-8">
         <div className="mt-24 flex w-full flex-col items-center gap-y-4">
-          <h3 className="w-full text-xl text-white lg:max-w-[75%] lg:text-3xl">
+          <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
             Team Registration
           </h3>
           <Card
@@ -20,8 +20,8 @@ export default function Page() {
             status="open"
           />
         </div>
-        <div className="flex w-full flex-col items-center gap-y-8">
-          <h3 className="w-full text-xl text-white lg:max-w-[75%] lg:text-3xl">
+        <div className="mt-16 flex w-full flex-col items-center gap-y-8">
+          <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
             Workshop Registration
           </h3>
           <Card
