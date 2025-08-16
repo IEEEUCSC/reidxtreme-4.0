@@ -16,6 +16,32 @@ export const metadata: Metadata = {
   title: "ReidXtreme 4.0",
   description:
     "A premier competitive programming challenge organized by IEEE Student Branch of UCSC and ACM Student Chapter. Hone your problem-solving skills and prepare for IEEEXtreme 19.0.",
+  openGraph: {
+    title: "ReidXtreme 4.0",
+    description:
+      "A premier competitive programming challenge organized by IEEE Student Branch of UCSC and ACM Student Chapter. Hone your problem-solving skills and prepare for IEEEXtreme 19.0.",
+    images: [
+      {
+        url: "https://cdn.jsdelivr.net/gh/IEEEUCSC/reidxtreme-4.0@main/public/email-assets/cover.png",
+        width: 1200,
+        height: 630,
+        alt: "ReidXtreme 4.0 - Premier Competitive Programming Challenge",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ReidXtreme 4.0",
+    description:
+      "A premier competitive programming challenge organized by IEEE Student Branch of UCSC and ACM Student Chapter. Hone your problem-solving skills and prepare for IEEEXtreme 19.0.",
+    images: [
+      {
+        url: "https://cdn.jsdelivr.net/gh/IEEEUCSC/reidxtreme-4.0@main/public/email-assets/cover.png",
+        alt: "ReidXtreme 4.0 - Premier Competitive Programming Challenge",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
