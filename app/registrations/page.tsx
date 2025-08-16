@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils";
 // Card data structure
 const cardData = {
   teamRegistration: {
-    subheading: "Preliminary Round",
+    subheading: "Initial Round",
     title: "Team Registration",
     description:
-      "The Preliminary Round of ReidXtreme 4.0 is an online coding competition designed to evaluate participants' problem-solving skills. Top performing teams from this round will qualify for the onsite Grand Finale, an 8 hour intensive coding challenge.",
+      "The Initial Round of ReidXtreme 4.0 is an online coding competition designed to evaluate participants' problem-solving skills. Top performing teams from this round will qualify for the onsite Grand Finale, an 8 hour intensive coding challenge.",
     link: "/registrations/team-registration",
     status: "open" as const,
   },
