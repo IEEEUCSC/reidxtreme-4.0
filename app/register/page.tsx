@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export default function Page() {
   return (
-    <main className="relative grid min-h-screen grid-rows-[60vh_1fr] gap-y-4 bg-black p-4 lg:grid-cols-2 lg:grid-rows-1">
+    <main className="relative grid min-h-screen grid-rows-[60vh_1fr] gap-y-4 p-4 lg:grid-cols-2 lg:grid-rows-1">
       <div className="relative flex flex-col items-center justify-center gap-y-4 lg:gap-y-8">
         <Card
           title="Team Registration"
