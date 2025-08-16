@@ -19,8 +19,8 @@ const cardData = {
       subheading: "Workshop 1",
       title: "Introduction to Competitive Programming",
       description:
-        "The first workshop of ReidXtreme 4.0 provides an introduction to ReidXtreme 4.0 and competitive programming, offering participants a clear understanding of the competition structure and essential problem solving fundamentals.",
-      link: "/registrations/workshop-intro",
+        "The first workshop of ReidXtreme 4.0 provides an introduction to ReidXtreme 4.0 and Competitive Programming, offering participants a clear understanding of the competition structure and essential problem solving fundamentals.",
+      link: "#",
       status: "done" as const,
     },
     {
@@ -28,14 +28,14 @@ const cardData = {
       title: "Getting Started with Algorithms in Competitive Programming",
       description:
         "This workshop will introduce participants to the fundamental algorithms used in competitive programming, providing practical insights into their applications and preparing participants to approach problem solving with greater efficiency and confidence.",
-      link: "/registrations/workshop-algorithms",
+      link: "https://forms.gle/bWzRpsFw3cGWeA6y9",
       status: "open" as const,
     },
     {
       subheading: "Workshop 3",
       title: "Announcing Soon",
       description: "Stay tuned for more details about our third workshop.",
-      link: "/registrations/workshop-3",
+      link: "#",
       status: "upcoming" as const,
     },
   ],
