@@ -61,7 +61,7 @@ export default function BubbleUpButton({
       onTouchEnd={handleTouchEnd}
       disabled={disabled || isDisabled}
       className={cn(
-        "relative flex h-fit w-fit cursor-pointer overflow-clip rounded-2xl border bg-black px-16 py-2",
+        "bg-accent relative flex h-fit w-fit cursor-pointer overflow-clip rounded-xl border px-16 py-2",
         "transition-opacity duration-200",
         "focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus:outline-none",
         (disabled || isDisabled) && "!cursor-not-allowed opacity-50",

@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { MoveRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import BGImg from "@/assets/registerBg.png";
+import BGImg from "@/public/img/cover.png";
 import BubbleUpButton from "@/components/ui/BubbleUpButton/BubbleUpButton";
 import { cn } from "@/lib/utils";
 
@@ -9,34 +8,46 @@ export default function Page() {
   return (
     <main className="relative grid min-h-screen grid-rows-[60vh_1fr] gap-y-4 p-4 lg:grid-cols-2 lg:grid-rows-1">
       <div className="relative flex flex-col items-center justify-center gap-y-4 lg:gap-y-8">
-        <Card
-          title="Team Registration"
-          description="Description"
-          link="/register"
-        />
-        <div className="flex w-full flex-col items-center gap-y-4">
+        <div className="mt-24 flex w-full flex-col items-center gap-y-4">
+          <h3 className="w-full text-xl text-white lg:max-w-[75%] lg:text-3xl">
+            Team Registration
+          </h3>
+          <Card
+            subheading="Preliminary Round"
+            title="Team Registration"
+            description="The Preliminary Round of ReidXtreme 4.0 is an online coding competition designed to evaluate participants' problem-solving skills. Top performing teams from this round will qualify for the onsite Grand Finale, an 8 hour intensive coding challenge."
+            link="/registrations/team-registration"
+            status="open"
+          />
+        </div>
+        <div className="flex w-full flex-col items-center gap-y-8">
           <h3 className="w-full text-xl text-white lg:max-w-[75%] lg:text-3xl">
             Workshop Registration
           </h3>
           <Card
-            title="Workshop 01"
-            description="Description"
-            link="/register"
-            disabled
+            subheading="Workshop 1"
+            title="Introduction to Competitive Programming"
+            description="The first workshop of ReidXtreme 4.0 provides an introduction to ReidXtreme 4.0 and competitive programming, offering participants a clear understanding of the competition structure and essential problem solving fundamentals."
+            link="/registrations/workshop-intro"
+            status="done"
           />
           <Card
-            title="Workshop 02"
-            description="Description"
-            link="/register"
+            subheading="Workshop 2"
+            title="Getting Started with Algorithms in Competitive Programming"
+            description="This workshop will introduce participants to the fundamental algorithms used in competitive programming, providing practical insights into their applications and preparing participants to approach problem solving with greater efficiency and confidence."
+            link="/registrations/workshop-algorithms"
+            status="upcoming"
           />
           <Card
-            title="Workshop 03"
-            description="Description"
-            link="/register"
+            subheading="Workshop 3"
+            title="Announcing Soon"
+            description="Stay tuned for more details about our third workshop."
+            link="/registrations/workshop-3"
+            status="upcoming"
           />
         </div>
       </div>
-      <div className="relative row-start-1 overflow-clip rounded-xl lg:col-start-2">
+      <div className="relative row-start-1 overflow-clip rounded-xl lg:sticky lg:top-4 lg:col-start-2 lg:h-[calc(100vh-2rem)]">
         <Image src={BGImg} alt="Background" fill objectFit="cover" />
       </div>
     </main>
@@ -45,33 +56,88 @@ export default function Page() {
 
 interface CardProps {
   title: string;
+  subheading?: string;
   description: string;
   link: string;
   disabled?: boolean;
+  status?: "open" | "upcoming" | "done";
 }
 
-const Card = ({ title, description, link, disabled }: CardProps) => {
+const Card = ({
+  title,
+  subheading,
+  description,
+  link,
+  disabled,
+  status = "open",
+}: CardProps) => {
+  // Get status badge styling
+  const getStatusBadge = (status: string) => {
+    const baseClasses = "px-2 py-1 rounded-full text-xs font-medium";
+    switch (status) {
+      case "open":
+        return {
+          classes: `${baseClasses} bg-green-500/20 text-green-400 border border-green-500/50`,
+          text: "Open",
+        };
+      case "upcoming":
+        return {
+          classes: `${baseClasses} bg-yellow-500/20 text-yellow-400 border border-yellow-500/50`,
+          text: "Upcoming",
+        };
+      case "done":
+        return {
+          classes: `${baseClasses} bg-gray-500/20 text-gray-400 border border-gray-500/50`,
+          text: "Done",
+        };
+      default:
+        return {
+          classes: `${baseClasses} bg-green-500/20 text-green-400 border border-green-500/50`,
+          text: "Open",
+        };
+    }
+  };
+
+  const statusBadge = getStatusBadge(status);
+
   return (
-    <div className="flex w-full min-w-[300px] flex-col gap-y-4 rounded-2xl border border-[rgba(0,160,116,0.5)] p-4 lg:max-w-[75%] lg:p-6">
-      <div className="flex flex-col gap-y-1 lg:gap-y-2">
-        <h1 className="text-2xl font-semibold text-[rgba(0,160,116)] lg:text-4xl">
-          {title}
-        </h1>
-        <p className="text-sm text-white/80 lg:text-base">{description}</p>
+    <div className="bg-card border-border flex w-full min-w-[300px] flex-col gap-y-4 rounded-2xl border p-4 backdrop-blur-sm transition-colors duration-300 hover:border-[rgba(0,160,116,0.8)] lg:max-w-[75%] lg:p-6">
+      <div className="flex flex-col gap-y-1 lg:gap-y-6">
+        {subheading && (
+          <div className="flex items-center justify-between">
+            <p className="text-muted-foreground text-xs font-medium tracking-wider uppercase lg:text-sm">
+              {subheading}
+            </p>
+            <span className={statusBadge.classes}>{statusBadge.text}</span>
+          </div>
+        )}
+        <div className="flex flex-wrap items-center justify-between gap-x-2">
+          <h1 className="text-2xl font-semibold text-[rgba(0,160,116)] lg:text-4xl">
+            {title}
+          </h1>
+        </div>
+        <p className="text-muted-foreground text-sm leading-relaxed lg:text-base">
+          {description}
+        </p>
       </div>
-      <Link
+      <a
         href={link}
         className={cn("", {
           "cursor-not-allowed": disabled,
         })}
+        target="_blank"
       >
         <BubbleUpButton
-          className="group flex w-full cursor-pointer gap-x-2 rounded-full border border-[rgba(0,160,116,0.5)] py-2 text-white/80 lg:py-4 lg:text-xl"
+          className="group flex w-full cursor-pointer gap-x-2 py-2 transition-all duration-300 hover:border-[rgba(0,160,116,1)] lg:py-4 lg:text-xl"
           isDisabled={disabled}
         >
-          Register Now <MoveRight className="group-hover:translate-x-2" />
+          Register Now{" "}
+          <ArrowRight
+            className="transition-transform duration-300 group-hover:translate-x-2"
+            strokeWidth={1.5}
+          />
         </BubbleUpButton>
-      </Link>
+      </a>
     </div>
   );
 };
