@@ -130,7 +130,7 @@ const Card = ({
   const getButtonText = (status: string) => {
     switch (status) {
       case "done":
-        return "Completed";
+        return "Already Done";
       case "upcoming":
         return "Coming Soon";
       case "open":
