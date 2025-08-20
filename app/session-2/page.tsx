@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckCheck, ExternalLink } from "lucide-react";
+import Image from "next/image";
 import BubbleUpButton from "@/components/ui/BubbleUpButton/BubbleUpButton";
 import { useEffect, useState } from "react";
 
@@ -9,7 +10,15 @@ const workshopData = {
   subheading: "Workshop 2",
   title: "Getting Started with Algorithms in Competitive Programming",
   description:
-    "This workshop will introduce participants to the fundamental algorithms used in competitive programming, providing practical insights into their applications and preparing participants to approach problem solving with greater efficiency and confidence.",
+    "Learn fundamental algorithms used in competitive programming with practical insights and applications to improve your problem-solving efficiency.",
+  speaker: {
+    name: "Dinuka Amarasinghe",
+    title: "DevOps Engineer at Cambio",
+    description:
+      "Get ready to learn from Dinuka Amarasinghe, a skilled DevOps Engineer at Cambio, as he guides you through algorithms in competitive programming.",
+    image: "/img/sessions/session2-cover.jpeg",
+  },
+  sessionTime: "7:00 PM",
   meetingLink:
     "https://zoom.us/j/92957770964?pwd=bItSG9nGA725wzyFcygSzqR6cthPiM.1", // Replace with actual meeting link
   redirectDelay: 5, // seconds
@@ -50,7 +59,9 @@ export default function Workshop2Page() {
           subheading={workshopData.subheading}
           title={workshopData.title}
           description={workshopData.description}
+          speaker={workshopData.speaker}
           countdown={countdown}
+          sessionTime={workshopData.sessionTime}
           onJoinNow={handleJoinNow}
           onGoBack={handleGoBack}
           redirected={redirected}
@@ -64,6 +75,13 @@ interface WorkshopCardProps {
   title: string;
   subheading: string;
   description: string;
+  sessionTime: string;
+  speaker: {
+    name: string;
+    title: string;
+    description: string;
+    image: string;
+  };
   countdown: number;
   onJoinNow: () => void;
   onGoBack: () => void;
@@ -74,6 +92,8 @@ const WorkshopCard = ({
   title,
   subheading,
   description,
+  speaker,
+  sessionTime,
   countdown,
   onJoinNow,
   redirected,
@@ -100,10 +120,33 @@ const WorkshopCard = ({
           {description}
         </p>
 
-        <div className="rounded-lg p-4 text-center">
-          <p className="text-sm font-medium lg:text-lg">
-            Session starts at 7:00 PM
-          </p>
+        {/* Speaker Section */}
+        <div className="bg-muted/20 border-muted/50 rounded-xl border p-3">
+          <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
+            <div className="flex-shrink-0">
+              <Image
+                src={speaker.image}
+                alt={`${speaker.name} - Speaker`}
+                width={120}
+                height={120}
+                className="border-border/20 w-full rounded-lg border object-cover lg:size-42"
+              />
+            </div>
+            <div className="flex-1 text-center lg:text-left">
+              <h3 className="text-foreground mb-1 text-lg font-semibold lg:text-xl">
+                {speaker.name}
+              </h3>
+              <p className="text-muted-foreground mb-2 text-sm lg:text-base">
+                {speaker.title}
+              </p>
+              <p className="text-muted-foreground mb-2 text-sm lg:text-base">
+                Session starts at {sessionTime}
+              </p>
+              <p className="text-muted-foreground hidden text-sm leading-relaxed lg:block">
+                {speaker.description}
+              </p>
+            </div>
+          </div>
         </div>
 
         {!redirected && countdown > 0 && (
@@ -129,7 +172,7 @@ const WorkshopCard = ({
 
       <div className="flex flex-col gap-y-3">
         <button onClick={onJoinNow} className="group">
-          <BubbleUpButton className="group flex w-full cursor-pointer gap-x-2 border-[rgba(0,160,116,0.5)] bg-[rgba(0,160,116,0.1)] py-2 transition-all duration-300 hover:border-[rgba(0,160,116,1)] lg:py-4 lg:text-xl">
+          <BubbleUpButton className="group flex w-full cursor-pointer gap-x-2 border-[rgba(0,160,116,0.5)] bg-[rgba(0,160,116,0.1)] py-4 transition-all duration-300 hover:border-[rgba(0,160,116,1)] lg:text-xl">
             Join Meeting Now{" "}
             <ExternalLink
               className="transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110"
