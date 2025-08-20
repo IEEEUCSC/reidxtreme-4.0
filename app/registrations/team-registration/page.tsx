@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function TeamRegistrationPage() {
+export default function TeamRegistrationPage() {
   return (
     <>
       <Script
