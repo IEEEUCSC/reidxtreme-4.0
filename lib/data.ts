@@ -1,3 +1,9 @@
+import { SocialLinkData } from "./types";
+import {
+  Instagram,
+  Linkedin,
+} from "lucide-react";
+
 export const HeaderNav = [
   {
     title: "About",
@@ -18,5 +24,18 @@ export const HeaderNav = [
   {
     title: "FAQ",
     link: "#faq",
+  },
+];
+
+export const HeaderSocials: SocialLinkData[] = [
+  {
+    title: "Instagram",
+    link: "https://instagram.com",
+    icon: Instagram,
+  },
+  {
+    title: "LinkedIn",
+    link: "https://linkedin.com",
+    icon: Linkedin,
   },
 ];
