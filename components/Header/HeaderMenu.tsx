@@ -35,6 +35,7 @@ export default function HeaderMenu({
   // Create timeline refs to control animations
   const openTimeline = useRef<gsap.core.Timeline | null>(null);
   const closeTimeline = useRef<gsap.core.Timeline | null>(null);
+  const isAnimatingRef = useRef(false); // Track animation state internally
 
   let navLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   let socialLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -45,6 +46,9 @@ export default function HeaderMenu({
       openTimeline.current = gsap.timeline({
         paused: true,
         onStart: () => {
+          console.log("GSAP Open animation started");
+          isAnimatingRef.current = true;
+
           // Query nav links right when animation starts (when DOM is ready)
           navLinkRefs.current = Array.from(
             container.current?.querySelectorAll<HTMLAnchorElement>(
@@ -58,6 +62,11 @@ export default function HeaderMenu({
             ) || [],
           );
 
+          console.log(
+            `Open animation: Found ${navLinkRefs.current.length} nav links, ${socialLinkRefs.current.length} social links`,
+          );
+
+          // Reset all elements to initial state
           navLinkRefs.current.forEach((link, index) => {
             if (link) {
               gsap.set(link, { y: "100%", opacity: 0, rotate: "5deg" });
@@ -69,7 +78,15 @@ export default function HeaderMenu({
             }
           });
         },
-        onComplete: () => onAnimationComplete(true),
+        onComplete: () => {
+          console.log("GSAP Open animation completed");
+          isAnimatingRef.current = false;
+          onAnimationComplete(true);
+        },
+        onInterrupt: () => {
+          console.log("GSAP Open animation interrupted");
+          isAnimatingRef.current = false;
+        },
       });
 
       openTimeline.current
@@ -130,14 +147,29 @@ export default function HeaderMenu({
       closeTimeline.current = gsap.timeline({
         paused: true,
         onStart: () => {
+          console.log("GSAP Close animation started");
+          isAnimatingRef.current = true;
+
           // Ensure we have the latest nav links for closing
           navLinkRefs.current = Array.from(
             container.current?.querySelectorAll<HTMLAnchorElement>(
               ".nav-link",
             ) || [],
           );
+
+          console.log(
+            `Close animation: Found ${navLinkRefs.current.length} nav links`,
+          );
         },
-        onComplete: () => onAnimationComplete(false),
+        onComplete: () => {
+          console.log("GSAP Close animation completed");
+          isAnimatingRef.current = false;
+          onAnimationComplete(false);
+        },
+        onInterrupt: () => {
+          console.log("GSAP Close animation interrupted");
+          isAnimatingRef.current = false;
+        },
       });
 
       closeTimeline.current
@@ -190,11 +222,21 @@ export default function HeaderMenu({
     { scope: container },
   );
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      console.log("HeaderMenu unmounting - cleaning up timelines");
+      openTimeline.current?.kill();
+      closeTimeline.current?.kill();
+    };
+  }, []);
+
   // React to isMenuOpen changes
   useEffect(() => {
     console.log("HeaderMenu rendered", {
       isMenuOpen,
       isFirstRender: isFirstRender.current,
+      isAnimating: isAnimatingRef.current,
     });
 
     // Skip animation on first render - component should just be ready
@@ -203,17 +245,59 @@ export default function HeaderMenu({
       return;
     }
 
-    if (isMenuOpen) {
-      closeTimeline.current?.pause(); // Pause close animation if running
-      openTimeline.current?.restart(); // Restart from beginning for open
-    } else {
-      openTimeline.current?.pause(); // Pause open animation if running
-      closeTimeline.current?.restart(); // Restart from beginning for close
-    }
+    // Always kill any running animations first to prevent conflicts
+    openTimeline.current?.kill();
+    closeTimeline.current?.kill();
+
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      // Check if container and DOM elements exist
+      if (!container.current) {
+        console.error("Container not ready, retrying...");
+        return;
+      }
+
+      // Re-query DOM elements to ensure they exist
+      const navLinks =
+        container.current.querySelectorAll<HTMLAnchorElement>(".nav-link");
+      const socialLinks =
+        container.current.querySelectorAll<HTMLAnchorElement>(".social-link");
+
+      if (navLinks.length === 0) {
+        console.warn("Nav links not found in DOM, retrying...");
+        // Retry after a short delay
+        setTimeout(() => {
+          if (isMenuOpen) {
+            openTimeline.current?.restart();
+          } else {
+            closeTimeline.current?.restart();
+          }
+        }, 100);
+        return;
+      }
+
+      console.log(
+        `Found ${navLinks.length} nav links, ${socialLinks.length} social links`,
+      );
+
+      if (isMenuOpen) {
+        console.log("Starting GSAP open animation");
+        openTimeline.current?.restart();
+      } else {
+        console.log("Starting GSAP close animation");
+        closeTimeline.current?.restart();
+      }
+    });
   }, [isMenuOpen]);
 
   return (
-    <div className="absolute min-h-screen w-[100vw]" ref={container}>
+    <div
+      className="absolute min-h-screen w-[100vw]"
+      ref={container}
+      id="header-menu"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div
         className="layer-1 absolute top-0 left-0 min-h-screen w-full bg-emerald-700/40"
         style={{
