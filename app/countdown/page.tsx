@@ -86,7 +86,7 @@ export default function CountdownPage() {
         ) : (
           <div className="bg-card border-border animate-pulse rounded-2xl border p-8">
             <h2 className="text-3xl font-bold text-[rgba(0,160,116)] md:text-4xl">
-              🚀 Time's Up!
+              🚀 Time&apos;s Up!
             </h2>
             <p className="text-muted-foreground mt-4 text-lg">
               ReidXtreme 4.0 has begun! Good luck to all participants!
