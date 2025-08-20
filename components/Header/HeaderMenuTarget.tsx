@@ -2,55 +2,32 @@
 
 import Link from "next/link";
 
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-
-gsap.registerPlugin(SplitText);
-
 interface HeaderMenuTargetProps {
   title: string;
   link: string;
   index: number;
+  onClose: () => void;
 }
 
 export default function HeaderMenuTarget({
   title,
   link,
   index,
+  onClose,
 }: HeaderMenuTargetProps) {
-  const container = useRef<HTMLLIElement>(null);
-
-  useGSAP(
-    () => {
-      // gsap code here...
-      let split = new SplitText(".nav-link", {
-        type: "chars",
-        mask: "chars",
-        // tag: "span",
-        charsClass: "inline-flex",
-      });
-      gsap.from(split.chars, {
-        y: "100%",
-        stagger: 0.1,
-        delay: 0.2 * index,
-        onComplete: () => split.revert(),
-      }); // <-- automatically reverted
-    },
-    { scope: container },
-  );
+  const handleLinkClick = () => {
+    onClose(); // Close the menu when a link is clicked
+  };
 
   return (
-    <li
-      className="group flex w-full hover:cursor-pointer"
-      ref={container}
-    >
+    <li className="group flex w-fit overflow-clip hover:cursor-pointer">
       <Link
         href={link}
-        className="nav-link block uppercase transition-transform duration-300 group-hover:translate-x-6 lg:text-9xl"
+        className="nav-link flex gap-x-2 text-white/70 uppercase transition-colors group-hover:translate-x-6 hover:text-white focus:text-white"
+        onClick={handleLinkClick}
       >
-        {title}
+        <span className="lg:text-9xl">{title}</span>
+        <span className="pt-2 text-4xl">({index + 1})</span>
       </Link>
     </li>
   );
