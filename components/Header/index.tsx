@@ -85,7 +85,7 @@ export default function Header() {
   }, [isMenuOpen, isMounted, isAnimating]);
 
   return (
-    <header className="fixed inset-0 top-0 z-[9999] container mx-auto flex h-fit min-h-[70px] w-full flex-col items-center justify-between">
+    <header className="fixed inset-0 top-0 z-[9999] container mx-auto flex h-fit min-h-[70px] w-full flex-col items-center justify-between px-2">
       {isMounted && (
         <HeaderMenu
           isMenuOpen={isMenuOpen}

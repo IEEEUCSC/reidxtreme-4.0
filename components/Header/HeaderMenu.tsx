@@ -311,13 +311,13 @@ export default function HeaderMenu({
         }}
       />
       <div
-        className="header-menu absolute top-0 flex min-h-screen w-full items-center bg-emerald-700 pt-[70px] lg:px-8"
+        className="header-menu absolute top-0 flex min-h-screen w-full flex-col items-center bg-emerald-700 py-[70px] lg:justify-end lg:px-8"
         style={{
           clipPath: "inset(0 0 100% 0)",
         }}
       >
-        <div className="container mx-auto flex">
-          <nav className="w-full">
+        <div className="container mx-auto flex h-full grow flex-col justify-between px-2 lg:flex-row lg:items-end">
+          <nav className="flex w-full items-end lg:h-full">
             <ul className="flex w-full flex-col gap-y-2">
               {HeaderNav.map((item, i) => (
                 <HeaderMenuTarget
@@ -331,7 +331,7 @@ export default function HeaderMenu({
             </ul>
           </nav>
           <div className="flex items-end">
-            <ul className="flex flex-col items-end gap-y-2">
+            <ul className="flex flex-col gap-y-2 lg:items-end">
               {HeaderSocials.map((item, i) => (
                 <HeaderSocialTarget
                   key={item.title}
