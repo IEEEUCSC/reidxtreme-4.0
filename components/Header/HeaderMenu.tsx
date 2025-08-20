@@ -311,7 +311,7 @@ export default function HeaderMenu({
         }}
       />
       <div
-        className="header-menu absolute top-0 flex min-h-screen w-full flex-col items-center bg-emerald-700 py-[70px] lg:justify-end lg:px-8"
+        className="header-menu absolute top-0 flex min-h-screen w-full flex-col items-center bg-emerald-700 pt-[70px] pb-4 lg:justify-end lg:px-8 lg:py-[70px] lg:pt-0 lg:pb-0"
         style={{
           clipPath: "inset(0 0 100% 0)",
         }}

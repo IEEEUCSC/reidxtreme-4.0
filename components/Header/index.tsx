@@ -99,7 +99,7 @@ export default function Header() {
         </div>
         <div className="relative flex items-center gap-x-4">
           <BubbleUpButton className="flex w-fit cursor-pointer px-4 py-2 transition-all duration-300 hover:border-[rgba(0,160,116,1)]">
-            <span>Register button</span>
+            <span>Register now</span>
           </BubbleUpButton>
           <button
             className={cn(
