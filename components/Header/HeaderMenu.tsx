@@ -218,6 +218,12 @@ export default function HeaderMenu({
           },
           "-=.2",
         );
+
+      return () => {
+        console.log("HeaderMenu cleanup - killing timelines");
+        openTimeline.current?.kill();
+        closeTimeline.current?.kill();
+      };
     },
     { scope: container },
   );
