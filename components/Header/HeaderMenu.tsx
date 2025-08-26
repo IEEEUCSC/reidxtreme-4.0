@@ -37,8 +37,8 @@ export default function HeaderMenu({
   const closeTimeline = useRef<gsap.core.Timeline | null>(null);
   const isAnimatingRef = useRef(false); // Track animation state internally
 
-  let navLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  let socialLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const navLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const socialLinkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useGSAP(
     () => {
@@ -67,12 +67,12 @@ export default function HeaderMenu({
           );
 
           // Reset all elements to initial state
-          navLinkRefs.current.forEach((link, index) => {
+          navLinkRefs.current.forEach((link) => {
             if (link) {
               gsap.set(link, { y: "100%", opacity: 0, rotate: "5deg" });
             }
           });
-          socialLinkRefs.current.forEach((link, index) => {
+          socialLinkRefs.current.forEach((link) => {
             if (link) {
               gsap.set(link, { y: "100%", opacity: 0, rotate: "5deg" });
             }
@@ -338,7 +338,7 @@ export default function HeaderMenu({
           </nav>
           <div className="flex items-end">
             <ul className="flex flex-col gap-y-2 lg:items-end">
-              {HeaderSocials.map((item, i) => (
+              {HeaderSocials.map((item) => (
                 <HeaderSocialTarget
                   key={item.title}
                   link={item.link}
