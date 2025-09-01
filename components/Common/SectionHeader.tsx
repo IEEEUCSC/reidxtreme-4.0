@@ -93,7 +93,7 @@ export default function SectionHeader({
     <Tag
       ref={ref}
       className={cn(
-        "relative text-3xl leading-tight text-balance md:text-4xl lg:text-8xl", // base styles
+        "relative text-3xl leading-tight text-balance md:text-4xl lg:text-6xl xl:text-8xl", // base styles
         "overflow-visible will-change-transform", // allow mask wrappers to show overflow where needed
         className,
       )}
