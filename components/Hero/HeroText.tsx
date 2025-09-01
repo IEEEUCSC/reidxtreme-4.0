@@ -152,7 +152,7 @@ export default function HeroText() {
 
   return (
     <h1
-      className="hero-text flex flex-col gap-y-2 uppercase lg:text-9xl"
+      className="hero-text flex flex-col gap-y-2 text-5xl uppercase md:text-7xl lg:text-8xl xl:text-9xl"
       ref={ref}
     >
       Premier Competitive Programming Challenge.

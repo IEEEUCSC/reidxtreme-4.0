@@ -9,7 +9,7 @@ export default function Hero() {
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="relative container mx-auto flex min-h-screen items-end py-[70px]">
+      <div className="relative container mx-auto flex min-h-screen items-end py-4 lg:py-[70px]">
         <HeroText />
       </div>
     </section>
