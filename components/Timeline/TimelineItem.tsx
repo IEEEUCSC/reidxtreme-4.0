@@ -47,7 +47,6 @@ export default function TimelineItem(props: _TimelineItemProps) {
       });
 
       const tl = gsap.timeline({
-        ease: "timeline-item-ease",
         scrollTrigger: {
           trigger: itemRef.current,
           start: () =>
@@ -55,31 +54,37 @@ export default function TimelineItem(props: _TimelineItemProps) {
             ((itemRef.current ? itemRef.current.offsetWidth : 200) *
               props.scrollStart +
               props.scrollStart * scrollGapAmount) +
-            " center",
+            " 60%",
           end: () =>
-            "+=" + (itemRef.current ? itemRef.current.offsetHeight * 1.5 : 200),
+            "+=" +
+            (itemRef.current
+              ? itemRef.current.offsetHeight * (isDesktop ? 2 : 1.25)
+              : 200),
           scrub: true,
           // markers: true,
         },
       });
 
       tl.from(splitDate.chars, {
-        y: 100,
+        y: 200,
         opacity: 0,
         duration: 0.5,
         stagger: 0.1,
+        ease: "timeline-item-ease",
       });
       tl.from(splitTitle.lines, {
-        y: 100,
+        y: 200,
         opacity: 0,
         duration: 0.45,
         stagger: 0.1,
+        ease: "timeline-item-ease",
       });
       tl.from(splitDescription.lines, {
-        y: 100,
+        y: 200,
         opacity: 0,
         duration: 0.4,
         stagger: 0.1,
+        ease: "timeline-item-ease",
       });
     }, itemRef);
 
@@ -88,17 +93,17 @@ export default function TimelineItem(props: _TimelineItemProps) {
 
   return (
     <div
-      className="_bg-purple-500 flex min-h-[200px] min-w-[600px] flex-col gap-y-4 text-white"
+      className="_bg-purple-500 flex min-h-[200px] min-w-[320px] flex-col gap-y-4 px-4 text-white lg:min-w-[600px]"
       ref={itemRef}
     >
-      <h3 className="lg:text-9xl" ref={date}>
+      <h3 className="text-5xl lg:text-9xl" ref={date}>
         {props.date}
       </h3>
-      <div className="flex flex-col gap-y-2">
-        <h2 className="font-bold lg:text-3xl" ref={title}>
+      <div className="flex flex-col lg:gap-y-2">
+        <h2 className="text-3xl font-bold lg:text-3xl" ref={title}>
           {props.title}
         </h2>
-        <p className="mt-4 lg:text-lg" ref={description}>
+        <p className="lg:text-lg" ref={description}>
           {props.description}
         </p>
       </div>

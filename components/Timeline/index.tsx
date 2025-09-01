@@ -43,7 +43,7 @@ export default function Timeline() {
   return (
     <div className="relative overflow-clip">
       <div
-        className="sticky top-0 flex min-h-screen w-fit flex-col justify-center"
+        className="sticky top-0 flex min-h-screen w-fit flex-col justify-center py-8"
         ref={horizontalScrollContainer}
       >
         <div className="w-[100vw]">
@@ -52,7 +52,7 @@ export default function Timeline() {
             className="container mx-auto mt-8 w-full"
           />
         </div>
-        <div className="horizontal-section _bg-red-500 _w-[200vw] _h-screen flex grow items-center justify-start gap-x-8 px-8 lg:gap-x-32 lg:px-32">
+        <div className="horizontal-section flex grow items-center justify-start gap-x-6 px-8 lg:gap-x-32 lg:px-32">
           {TimelineData.map((item, i) => (
             <TimelineItem key={i} {...item} scrollStart={i} />
           ))}
