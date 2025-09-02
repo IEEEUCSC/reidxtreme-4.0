@@ -26,7 +26,7 @@ export default function HeaderMenuTarget({
         className="nav-link flex gap-x-2 text-white/70 uppercase transition-colors group-hover:translate-x-6 hover:text-white focus:text-white"
         onClick={handleLinkClick}
       >
-        <span className="text-5xl lg:text-9xl">{title}</span>
+        <span className="text-5xl lg:text-8xl xl:text-9xl">{title}</span>
         <span className="text-2xl lg:pt-2 lg:text-4xl">({index + 1})</span>
       </Link>
     </li>

@@ -1,4 +1,4 @@
-import { SocialLinkData } from "./types";
+import { SocialLinkData, TimelineItemProps } from "./types";
 import {
   Instagram,
   Linkedin,
@@ -39,3 +39,31 @@ export const HeaderSocials: SocialLinkData[] = [
     icon: Linkedin,
   },
 ];
+
+export const TimelineData: TimelineItemProps[] = [
+  {
+    date: "24 SEP",
+    title: "New Year's Day",
+    description: "Celebrating the start of the new year.",
+  },
+  {
+    date: "24 SEP",
+    title: "New Year's Day",
+    description: "Celebrating the start of the new year.",
+  },
+  {
+    date: "24 SEP",
+    title: "New Year's Day",
+    description: "Celebrating the start of the new year.",
+  },
+  {
+    date: "24 SEP",
+    title: "New Year's Day",
+    description: "Celebrating the start of the new year.",
+  },
+  {
+    date: "24 SEP",
+    title: "New Year's Day",
+    description: "Celebrating the start of the new year.",
+  },
+]
