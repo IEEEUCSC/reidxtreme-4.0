@@ -41,7 +41,7 @@ export default function Timeline() {
   });
 
   return (
-    <div className="relative overflow-clip">
+    <div className="relative overflow-clip" id="timeline">
       <div
         className="sticky top-0 flex min-h-screen w-fit flex-col justify-center py-8"
         ref={horizontalScrollContainer}
