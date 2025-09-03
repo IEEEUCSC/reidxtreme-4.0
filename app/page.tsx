@@ -1,11 +1,13 @@
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import Timeline from "@/components/Timeline";
 
 export default function Home() {
   return (
-    <main className="bg-background relative flex min-h-screen px-4">
+    <main className="bg-background relative min-h-screen">
       <Hero />
-      <div className="min-h-[200vh]" />
+       <Timeline />
+      <Footer />
     </main>
   );
-
 }
