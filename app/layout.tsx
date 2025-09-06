@@ -55,7 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background relative antialiased`}
       >
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>
