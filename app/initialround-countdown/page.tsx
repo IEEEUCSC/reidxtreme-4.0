@@ -28,7 +28,7 @@ export default function Page() {
           endTime={END_TIME}
           criticalHours={CRITICAL_HOURS}
           className="font-bpmono text-4xl xl:text-9xl"
-          criticalClassName="text-primary-300 font-bold animate-ping"
+          criticalClassName="text-primary-300 font-bold "
         />
       </div>
     </main>
