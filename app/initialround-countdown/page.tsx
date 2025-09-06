@@ -3,7 +3,7 @@ import HeroBgImage from "@/assets/hero-bg.png";
 import CountdownTimer from "./CountDownTimer";
 import Image from "next/image";
 
-const END_TIME = new Date("2025-09-06T17:04:00"); // Final round end time
+const END_TIME = new Date("2025-09-06T16:00:00"); // Final round end time
 const CRITICAL_HOURS = 2; // Critical period in hours (e.g., 3 hours before the end)
 
 export default function Page() {
