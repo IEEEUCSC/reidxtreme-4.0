@@ -73,8 +73,7 @@ export default function RootLayout({
           {children}
          {/* </ReactLenis> */}
 
-        {/* <Header /> */}
-        {children}
+     
 
       </body>
     </html>
