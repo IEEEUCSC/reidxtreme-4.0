@@ -13,6 +13,9 @@ export default function Home() {
     const handleFrameProgress = (progress: number) => {
     console.log("Frame progress:", progress);
   };
+    useEffect(() => {
+    redirect("/initialround-countdown");
+  }, []);
   return (
     <>
        <ScrollBackground/>
