@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ReactLenis } from "lenis/react";
 import Header from "@/components/Header";
 
 const geistSans = Geist({
@@ -55,8 +56,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background relative antialiased`}
       >
+       <ReactLenis
+          root
+          options={{
+            lerp: 0.04, // Slightly reduced for better frame sync
+            duration: 1.0, // Reduced duration
+            orientation: "vertical",
+            gestureOrientation: "vertical",
+            smoothWheel: true,
+            wheelMultiplier: 0.8, // Reduced for better control
+            touchMultiplier: 1.5, // Reduced for better mobile control
+            infinite: false,
+          }}
+        > 
+          <Header />
+          {children}
+         </ReactLenis>
+
         {/* <Header /> */}
         {children}
+
       </body>
     </html>
   );

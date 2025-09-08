@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollBackground from "@/components/ScrollFrames/ScrollBackground";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
@@ -11,11 +12,17 @@ export default function Home() {
   useEffect(() => {
     redirect("/initialround-countdown");
   }, []);
+    const handleFrameProgress = (progress: number) => {
+    console.log("Frame progress:", progress);
+  };
   return (
+    <>
+       <ScrollBackground/>
     <main className="bg-background relative min-h-screen">
-      {/* <Hero /> */}
-      {/* <Timeline /> */}
-      {/* <Footer /> */}
+      <Hero />
+     <Timeline />
+      <Footer /> 
     </main>
+</>
   );
 }

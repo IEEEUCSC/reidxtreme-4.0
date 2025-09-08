@@ -122,3 +122,13 @@
     @apply bg-background text-foreground;
   }
 }
+/* Add to your globals.css file */
+video {
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+}
+
+/* Smooth scrolling for better performance */
+html {
+  scroll-behavior: auto; /* Disable smooth scrolling that can interfere */
+}
