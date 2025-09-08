@@ -56,7 +56,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background relative antialiased`}
       >
-       <ReactLenis
+       {/* <ReactLenis
           root
           options={{
             lerp: 0.04, // Slightly reduced for better frame sync
@@ -68,10 +68,10 @@ export default function RootLayout({
             touchMultiplier: 1.5, // Reduced for better mobile control
             infinite: false,
           }}
-        > 
+        >  */}
           <Header />
           {children}
-         </ReactLenis>
+         {/* </ReactLenis> */}
 
         {/* <Header /> */}
         {children}

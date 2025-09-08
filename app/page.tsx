@@ -9,16 +9,14 @@ import { useEffect } from "react";
 
 
 export default function Home() {
-  useEffect(() => {
-    redirect("/initialround-countdown");
-  }, []);
+  
     const handleFrameProgress = (progress: number) => {
     console.log("Frame progress:", progress);
   };
   return (
     <>
        <ScrollBackground/>
-    <main className="bg-background relative min-h-screen">
+    <main className=" relative min-h-screen">
       <Hero />
      <Timeline />
       <Footer /> 
