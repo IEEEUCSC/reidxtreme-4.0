@@ -72,6 +72,10 @@ export default function RootLayout({
           <Header />
           {children}
          </ReactLenis>
+
+        {/* <Header /> */}
+        {children}
+
       </body>
     </html>
   );

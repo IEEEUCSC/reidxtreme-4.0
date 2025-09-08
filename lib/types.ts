@@ -11,3 +11,10 @@ export interface SocialLinkData {
 export interface HeaderSocialTargetProps extends SocialLinkData {
   onClose: () => void;
 }
+
+
+export interface TimelineItemProps {
+  title: string;
+  date: string;
+  description: string;
+}

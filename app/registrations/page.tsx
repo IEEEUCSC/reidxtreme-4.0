@@ -30,17 +30,26 @@ const cardData = {
       description:
         "This workshop will introduce participants to the fundamental algorithms used in competitive programming, providing practical insights into their applications and preparing participants to approach problem solving with greater efficiency and confidence.",
       link: "https://forms.gle/bWzRpsFw3cGWeA6y9",
-      status: "open" as const,
+      status: "done" as const,
     },
     {
       subheading: "Workshop 3",
-      title: "Announcing Soon",
-      description: "Stay tuned for more details about our third workshop.",
-      link: "#",
-      status: "upcoming" as const,
+      title: "Dynamic Programming",
+      description:
+        "Dive deep into Dynamic Programming (DP): learn how to identify DP problems, define states and transitions, optimize with space/time improvements, and apply patterns to classic competitive programming challenges.",
+      link: "https://forms.gle/hKuKfvDpQgSdGMdBA",
+      // Status set to open now that details & link are available. Change back if not yet accepting registrations.
+      status: "open" as const,
     },
   ],
 };
+
+// Derive workshop groupings
+const openWorkshops = cardData.workshops.filter((w) => w.status === "open");
+const pastWorkshops = cardData.workshops.filter((w) => w.status === "done");
+
+// (Optional future) If needed, upcoming workshops could be handled similarly:
+// const upcomingWorkshops = cardData.workshops.filter((w) => w.status === "upcoming");
 
 export default function Page() {
   return (
@@ -65,32 +74,65 @@ export default function Page() {
             />
           </RevealAnimationContainer>
         </div>
-        <div className="mt-16 flex w-full flex-col items-center gap-y-8">
-          <RevealAnimationContainer
-            delay={0.4}
-            className="mx-auto flex items-center justify-center"
-          >
-            <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
-              Workshop Registration
-            </h3>
-          </RevealAnimationContainer>
-
-          {cardData.workshops.map((workshop, index) => (
+        <div className="mt-16 flex w-full flex-col items-center gap-y-12">
+          {/* Open Workshops Section */}
+          <div className="flex w-full flex-col items-center gap-y-8">
             <RevealAnimationContainer
-              key={index}
-              delay={0.3 + (index + 1) * 0.1}
+              delay={0.4}
               className="mx-auto flex items-center justify-center"
             >
-              <Card
-                key={index}
-                subheading={workshop.subheading}
-                title={workshop.title}
-                description={workshop.description}
-                link={workshop.link}
-                status={workshop.status}
-              />
+              <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
+                Upcoming Workshops
+              </h3>
             </RevealAnimationContainer>
-          ))}
+            {openWorkshops.length === 0 && (
+              <p className="text-muted-foreground text-sm lg:text-base">
+                No active workshops at the moment. Please check back soon.
+              </p>
+            )}
+            {openWorkshops.map((workshop, index) => (
+              <RevealAnimationContainer
+                key={workshop.title}
+                delay={0.5 + index * 0.1}
+                className="mx-auto flex items-center justify-center"
+              >
+                <Card
+                  subheading={workshop.subheading}
+                  title={workshop.title}
+                  description={workshop.description}
+                  link={workshop.link}
+                  status={workshop.status}
+                />
+              </RevealAnimationContainer>
+            ))}
+          </div>
+
+          {/* Past Workshops Section */}
+          <div className="flex w-full flex-col items-center gap-y-8">
+            <RevealAnimationContainer
+              delay={0.4}
+              className="mx-auto flex items-center justify-center"
+            >
+              <h3 className="text-foreground w-full text-xl font-semibold lg:max-w-[75%] lg:text-3xl">
+                Past Workshops
+              </h3>
+            </RevealAnimationContainer>
+            {pastWorkshops.map((workshop, index) => (
+              <RevealAnimationContainer
+                key={workshop.title}
+                delay={0.5 + index * 0.1}
+                className="mx-auto flex items-center justify-center"
+              >
+                <Card
+                  subheading={workshop.subheading}
+                  title={workshop.title}
+                  description={workshop.description}
+                  link={workshop.link}
+                  status={workshop.status}
+                />
+              </RevealAnimationContainer>
+            ))}
+          </div>
         </div>
       </div>
       <div className="relative row-start-1 overflow-clip rounded-xl lg:sticky lg:top-4 lg:col-start-2 lg:h-[calc(100vh-2rem)]">
