@@ -1,5 +1,8 @@
 import { HeaderSocials } from "@/lib/data";
 import FooterText from "./FooterText";
+import ACMLogo from "@/public/img/acm-logo.png";
+import IEEEUCSClogo from "@/public/img/ieee-ucsc-logo.png";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -11,8 +14,20 @@ export default function Footer() {
         <div className="relative flex w-full flex-col items-center gap-y-8 pt-4 lg:flex-row lg:justify-between">
           <div className="absolute top-0 left-0 h-0.5 w-full bg-white/80" />
           <div className="flex items-center justify-center gap-x-2">
-            <h3>Logo</h3>
-            <h3>Logo</h3>
+            <Image
+              src={ACMLogo}
+              alt="ACM UCSC Logo"
+              width={50}
+              height={50}
+              className="h-auto w-10 md:w-28"
+            />
+            <Image
+              src={IEEEUCSClogo}
+              alt="IEEE UCSC Logo"
+              width={50}
+              height={50}
+              className="h-auto w-10 md:w-42"
+            />
           </div>
           <div className="">
             <ul className="flex items-center justify-center gap-x-4">

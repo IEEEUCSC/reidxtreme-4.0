@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import BubbleUpButton from "../ui/BubbleUpButton/BubbleUpButton";
 import HeaderMenu from "./HeaderMenu";
 import { cn } from "@/lib/utils";
-
+import Logo from "@/public/img/logo.png";
+import Image from "next/image";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -95,7 +96,14 @@ export default function Header() {
       )}
       <div className="flex w-full items-center justify-between py-2">
         <div className="relative z-[999]">
-          <h1>logo</h1>
+          <Image
+            src={Logo}
+            alt="ReidXtreme 4.0 Logo"
+            width={60}
+            height={60}
+            className="h-auto w-12 md:w-24"
+            priority
+          />
         </div>
         <div className="relative flex items-center gap-x-4">
           <BubbleUpButton className="flex w-fit cursor-pointer px-4 py-2 transition-all duration-300 hover:border-[rgba(0,160,116,1)]">
