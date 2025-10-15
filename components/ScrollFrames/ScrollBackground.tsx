@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import Preloader from '@/components/Preloader';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -18,6 +19,7 @@ const ScrollBackground: React.FC<ScrollBackgroundProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [images, setImages] = React.useState<HTMLImageElement[]>([]);
   const [imagesLoaded, setImagesLoaded] = React.useState(false);
+  const [loadingProgress, setLoadingProgress] = React.useState(0);
 
   // Load images
   useEffect(() => {
@@ -26,6 +28,9 @@ const ScrollBackground: React.FC<ScrollBackgroundProps> = ({ children }) => {
     
     const checkAllLoaded = () => {
       loadedCount++;
+      const progress = (loadedCount / TOTAL_FRAMES) * 100;
+      setLoadingProgress(progress);
+      
       if (loadedCount === TOTAL_FRAMES) {
         setImagesLoaded(true);
       }
@@ -135,16 +140,19 @@ const ScrollBackground: React.FC<ScrollBackgroundProps> = ({ children }) => {
   }, [images, imagesLoaded]);
 
   return (
-    <div 
-      ref={containerRef}
-      className="fixed inset-0 -z-10 w-full h-full"
-    >
-      <canvas 
-        ref={canvasRef} 
-        className="w-full h-full object-cover"
-      />
-      {children}
-    </div>
+    <>
+      <Preloader progress={loadingProgress} isLoading={!imagesLoaded} />
+      <div 
+        ref={containerRef}
+        className="fixed inset-0 -z-10 w-full h-full"
+      >
+        <canvas 
+          ref={canvasRef} 
+          className="w-full h-full object-cover"
+        />
+        {children}
+      </div>
+    </>
   );
 };
 
