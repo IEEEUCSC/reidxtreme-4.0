@@ -1,8 +1,5 @@
 import { SocialLinkData, TimelineItemProps } from "./types";
-import {
-  Instagram,
-  Linkedin,
-} from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 
 export const HeaderNav = [
   {
@@ -42,28 +39,27 @@ export const HeaderSocials: SocialLinkData[] = [
 
 export const TimelineData: TimelineItemProps[] = [
   {
-    date: "24 SEP",
-    title: "New Year's Day",
-    description: "Celebrating the start of the new year.",
+    date: "13 AUG",
+    title: "Session 1: Introduction to Competitive Programming",
+    description:
+      "Kickoff session covering ReidXtreme overview, IEEEXtreme connection, rounds, and CP fundamentals by Bhasura and Lakshith.",
   },
   {
-    date: "24 SEP",
-    title: "New Year's Day",
-    description: "Celebrating the start of the new year.",
+    date: "20 AUG",
+    title: "Session 2: Getting Started with Algorithms",
+    description:
+      "Dinuka Amarasinghe introduces fundamental algorithms in competitive programming with practical insights and examples.",
   },
   {
-    date: "24 SEP",
-    title: "New Year's Day",
-    description: "Celebrating the start of the new year.",
+    date: "3 SEP",
+    title: "Awareness Session: Team Dynamics",
+    description:
+      "Saneru Akarawita shares strategies to master team dynamics and prepare effectively for ReidXtreme 4.0.",
   },
   {
-    date: "24 SEP",
-    title: "New Year's Day",
-    description: "Celebrating the start of the new year.",
+    date: "18 OCT",
+    title: "Grand Finale: Final Round",
+    description:
+      "Top teams face an 8-hour onsite coding challenge to compete for the ReidXtreme 4.0 title.",
   },
-  {
-    date: "24 SEP",
-    title: "New Year's Day",
-    description: "Celebrating the start of the new year.",
-  },
-]
+];
