@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { WavyBackground } from "@/components/ui/wavy-background";
+import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 
 // Countdown configuration
 const countdownConfig = {
-  title: "ReidXtreme 4.0 - Final Round",
+  title: "Final Round",
   description: "The ultimate 8-hour coding challenge is about to begin!",
-  targetDate: "2025-08-20T20:00:00", // Set your target date and time here
+  targetDate: "2025-10-18T17:00:00", // Set your target date and time here
   logo: "/img/logo.png",
 };
 
@@ -51,82 +53,63 @@ export default function CountdownPage() {
   }, []);
 
   return (
-    <main className="from-background via-background to-muted/20 relative flex min-h-screen items-center justify-center bg-gradient-to-br p-4">
-      <div className="flex w-full max-w-4xl flex-col items-center gap-y-8 text-center">
-        {/* Logo */}
-        <div className="mb-4">
-          <Image
-            src={countdownConfig.logo}
-            alt="ReidXtreme 4.0 Logo"
-            width={120}
-            height={120}
-            className="h-auto w-24 md:w-32"
-            priority
-          />
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden p-4">
+      {/* Animated gradient background layer */}
+      <WavyBackground className="mx-auto max-w-4xl pb-40">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 opacity-80"
+        >
+          <div className="gradient-animated absolute inset-[-20%]" />
+          {/* subtle vignette */}
+          <div className="absolute inset-0" />
         </div>
-
-        {/* Title */}
-        <div className="space-y-4">
-          <h1 className="text-foreground text-4xl font-bold md:text-6xl lg:text-7xl">
-            {countdownConfig.title}
-          </h1>
-          <p className="text-muted-foreground text-lg md:text-xl lg:text-2xl">
-            {countdownConfig.description}
-          </p>
-        </div>
-
-        {/* Countdown Display */}
-        {!isExpired ? (
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
-            <TimeCard value={timeLeft.days} label="Days" />
-            <TimeCard value={timeLeft.hours} label="Hours" />
-            <TimeCard value={timeLeft.minutes} label="Minutes" />
-            <TimeCard value={timeLeft.seconds} label="Seconds" />
+        <div className="flex w-full max-w-4xl flex-col items-center gap-y-8 text-center">
+          {/* Logo */}
+          <div className="mb-4">
+            <Image
+              src={countdownConfig.logo}
+              alt="ReidXtreme 4.0 Logo"
+              width={120}
+              height={120}
+              className="h-auto w-24 md:w-48"
+              priority
+            />
           </div>
-        ) : (
-          <div className="bg-card border-border animate-pulse rounded-2xl border p-8">
-            <h2 className="text-3xl font-bold text-[rgba(0,160,116)] md:text-4xl">
-              🚀 Time&apos;s Up!
-            </h2>
-            <p className="text-muted-foreground mt-4 text-lg">
-              ReidXtreme 4.0 has begun! Good luck to all participants!
-            </p>
+
+          {/* Title */}
+          <div className="space-y-4">
+            <h1 className="text-foreground text-4xl font-bold md:text-6xl lg:text-7xl">
+              {countdownConfig.title}
+            </h1>
+            <TextShimmer
+              className="text-lg md:text-xl lg:text-2xl"
+              duration={10}
+            >
+              {countdownConfig.description}
+            </TextShimmer>
           </div>
-        )}
 
-        {/* Additional Info */}
-        <div className="bg-card border-border rounded-xl border p-6 text-center">
-          <h3 className="text-foreground mb-2 text-xl font-semibold">
-            Get Ready!
-          </h3>
-          <p className="text-muted-foreground">
-            Make sure you have your development environment set up and ready to
-            go. The competition will be intense!
-          </p>
+          {/* Countdown Display */}
+          {!isExpired ? (
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
+              <TimeCard value={timeLeft.days} label="Days" />
+              <TimeCard value={timeLeft.hours} label="Hours" />
+              <TimeCard value={timeLeft.minutes} label="Minutes" />
+              <TimeCard value={timeLeft.seconds} label="Seconds" />
+            </div>
+          ) : (
+            <div className="bg-card border-border animate-pulse rounded-2xl border p-8">
+              <h2 className="text-3xl font-bold text-[rgba(0,160,116)] md:text-4xl">
+                🚀 Time&apos;s Up!
+              </h2>
+              <p className="text-muted-foreground mt-4 text-lg">
+                ReidXtreme 4.0 has begun! Good luck to all participants!
+              </p>
+            </div>
+          )}
         </div>
-
-        {/* Progress Indicators */}
-        <div className="grid w-full max-w-2xl grid-cols-1 gap-4 md:grid-cols-3">
-          <StatusCard
-            icon="🏆"
-            title="Competition"
-            status="Starting Soon"
-            color="text-yellow-400"
-          />
-          <StatusCard
-            icon="⏰"
-            title="Duration"
-            status="8 Hours"
-            color="text-blue-400"
-          />
-          <StatusCard
-            icon="🎯"
-            title="Goal"
-            status="Solve & Win"
-            color="text-green-400"
-          />
-        </div>
-      </div>
+      </WavyBackground>
     </main>
   );
 }
