@@ -8,7 +8,7 @@ import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 // Countdown configuration
 const countdownConfig = {
   title: "Final Round",
-  description: "The ultimate 8-hour coding challenge is about to begin!",
+  description: "The ultimate 7-hour coding challenge is about to begin!",
   targetDate: "2025-10-18T17:00:00", // Set your target date and time here
   logo: "/img/logo.png",
 };
