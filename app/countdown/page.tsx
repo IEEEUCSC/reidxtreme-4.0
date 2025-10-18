@@ -92,8 +92,7 @@ export default function CountdownPage() {
 
           {/* Countdown Display */}
           {!isExpired ? (
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
-              <TimeCard value={timeLeft.days} label="Days" />
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8">
               <TimeCard value={timeLeft.hours} label="Hours" />
               <TimeCard value={timeLeft.minutes} label="Minutes" />
               <TimeCard value={timeLeft.seconds} label="Seconds" />
