@@ -8,7 +8,7 @@ import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 // Countdown configuration
 const countdownConfig = {
   title: "Final Round",
-  description: "The ultimate 7-hour coding challenge is about to begin!",
+  description: "Race the Clock - Time remaining:",
   targetDate: "2025-10-18T17:00:00", // Set your target date and time here
   logo: "/img/logo.png",
 };
@@ -101,10 +101,10 @@ export default function CountdownPage() {
           ) : (
             <div className="bg-card border-border animate-pulse rounded-2xl border p-8">
               <h2 className="text-3xl font-bold text-[rgba(0,160,116)] md:text-4xl">
-                🚀 Time&apos;s Up!
+                ⏰ Time&apos;s Up!
               </h2>
               <p className="text-muted-foreground mt-4 text-lg">
-                ReidXtreme 4.0 has begun! Good luck to all participants!
+                The Final Round window is now closed.
               </p>
             </div>
           )}
